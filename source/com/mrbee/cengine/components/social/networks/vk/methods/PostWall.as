@@ -51,8 +51,8 @@ package com.mrbee.cengine.components.social.networks.vk.methods
 			
 			if(response.post_hash != null && response.post_hash != ""){
 				if(ExternalInterface.available == true){
-					ExternalInterface.addCallback("PostWallCallback", PostWallCallback);
-					ExternalInterface.call("saveWallPost", response.post_hash);
+					ExternalInterface.addCallback("CEngine_PostWallCallback", PostWallCallback);
+					ExternalInterface.call("CEngine_saveWallPost", response.post_hash);
 				} else {
 					if (_onResult != null){
 						responderPost = new PostWallSocialResponder();

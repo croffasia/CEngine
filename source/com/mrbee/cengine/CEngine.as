@@ -12,7 +12,7 @@ package com.mrbee.cengine
 	import flash.events.EventDispatcher;
 	
 
-	/**
+	/** 
 	 * Базовый класс фреймворка. Базовый класс содержит все необходимые для работы менеджеры и доступ к Flash vars объектам.
 	 * 
 	 * @author Poluosmak Andrew
@@ -94,13 +94,7 @@ package com.mrbee.cengine
 		 */
 		public function getFlashVars():Object
 		{
-			/*var _flashVars:Object = { };
-			_flashVars.referrer = "wall_view_inline";
-			_flashVars.post_id = 100;
-			_flashVars.viewer_type = 2;*/
 			return _mainStage.loaderInfo.parameters;
-			
-			//return _flashVars;
 		}
 		
 		/** 

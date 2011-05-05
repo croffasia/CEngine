@@ -20,6 +20,7 @@ package com.mrbee.cengine.components.social.networks.vk
 			registerClassAlias(SocialMethod.GET_BALANCE, GetBalance);
 			registerClassAlias(SocialMethod.POST_WALL, PostWall);
 			registerClassAlias(SocialMethod.SHOW_INVITE_BOX, ShowInviteBox);
+			registerClassAlias(SocialMethod.POST_NEWS_FEED, PostNews);			
 			
 		}
 		
