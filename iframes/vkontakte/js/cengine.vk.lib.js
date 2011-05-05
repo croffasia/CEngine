@@ -66,23 +66,18 @@
 	
 	function CEngine_saveNewsPost(_owner_id, _message, _attachment)
 	{
-		VK.api("wall.post", {owner_id: _owner_id, message: _message, attachment: _attachment}, onNewsPostSave);	
-	}
-	
-	function onNewsPostSave(data)
-	{
-		var obj = getFlashAppObject();
-		if(obj){			
+		VK.api("wall.post", {owner_id: _owner_id, message: _message, attachment: _attachment}, function(data){
 			
-			if (data.response) 
-			{
-				var error = data.response.error;
+			var obj = getFlashAppObject();
+			if(obj){			
 				
-				if(!error){ error = 0; }
-				
-				obj.CEngine_PostNewsCallback(data.response.post_id, error);
+				if (data.response) 
+				{
+					obj.CEngine_PostNewsCallback(data.response.post_id, 0);
+				}
 			}
-		}
+			
+		});	
 	}
 	
 	/*************************************************************************************
