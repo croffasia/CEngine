@@ -1,3 +1,8 @@
+/******************************************************************
+ * CEngine - AS3 component game framework
+ * Copyright (C) 2011 Mr.Bee, LLC
+ * For more information see http://www.mrbee.com.ua
+ ****************************************************************/
 package com.mrbee.cengine.base.components 
 {
 	import com.mrbee.cengine.cinterface.IEntityComponent;
@@ -41,7 +46,6 @@ package com.mrbee.cengine.base.components
 			
 			// add global event listeners for change status
 			addEvent(StateEvent.ACTIVATE, DelegateFunction.create(onActivateStateHandler), false);
-			addEvent(StateEvent.DEACTIVATE, DelegateFunction.create(onDeactivateStateHandler), false);
 		}
 		
 		/**

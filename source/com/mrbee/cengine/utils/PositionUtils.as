@@ -1,3 +1,8 @@
+/******************************************************************
+ * CEngine - AS3 component game framework
+ * Copyright (C) 2011 Mr.Bee, LLC
+ * For more information see http://www.mrbee.com.ua
+ ****************************************************************/
 package com.mrbee.cengine.utils
 {
 	import com.mrbee.cengine.CEngine;
@@ -7,7 +12,9 @@ package com.mrbee.cengine.utils
 	import flash.display.Stage;
 
 	/**
-	 * Утилита для позиционирования графичесикх элементов. Данная утилита позиционирует DisplayObject объекты относительно слоев.  
+	 * Утилита для позиционирования графичесикх элементов. Данная утилита позиционирует DisplayObject объекты относительно слоев.
+	 * 
+	 * @author Poluosmak Andrew
 	 */
 	public class PositionUtils
 	{	

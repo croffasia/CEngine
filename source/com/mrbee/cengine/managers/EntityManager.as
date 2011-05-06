@@ -1,7 +1,13 @@
+/******************************************************************
+ * CEngine - AS3 component game framework
+ * Copyright (C) 2011 Mr.Bee, LLC
+ * For more information see http://www.mrbee.com.ua
+ ****************************************************************/
 package com.mrbee.cengine.managers 
 {
 	import com.mrbee.cengine.cinterface.ICentity;
-	import com.mrbee.cengine.core.CEntity;	
+	import com.mrbee.cengine.core.CEntity;
+	
 	import flash.utils.Dictionary;
 	
 	/**
@@ -111,6 +117,13 @@ package com.mrbee.cengine.managers
 
 		}
 		
+		/**
+		 * @private
+		 */
+		public function getAll():Dictionary
+		{
+			return _entity;
+		}
 	}
 
 }

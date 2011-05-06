@@ -1,9 +1,16 @@
+/******************************************************************
+ * CEngine - AS3 component game framework
+ * Copyright (C) 2011 Mr.Bee, LLC
+ * For more information see http://www.mrbee.com.ua
+ ****************************************************************/
 package com.mrbee.cengine.console.logger
 {
 	import flash.utils.Dictionary;
 
 	/**
 	 * Логгер для отладки приложения и добавления информации в консоль.
+	 * 
+	 * @author Poluosmak Andrew
 	 */
 	public class Logger extends LoggerTemplates
 	{

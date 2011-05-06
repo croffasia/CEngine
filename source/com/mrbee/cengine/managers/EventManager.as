@@ -1,3 +1,8 @@
+/******************************************************************
+ * CEngine - AS3 component game framework
+ * Copyright (C) 2011 Mr.Bee, LLC
+ * For more information see http://www.mrbee.com.ua
+ ****************************************************************/
 package com.mrbee.cengine.managers
 {
 	import com.mrbee.cengine.managers.objects.EventObject;
@@ -20,6 +25,8 @@ package com.mrbee.cengine.managers
 	 * </p>
 	 * <p>В методах объекта менеджера есть возможность указания конкретного IEventDispatcher. В случае его указания, 
 	 * то операция будет применена исключительно для этого объекта. В противном случае затроент все события менеджера.</p>
+	 * 
+	 * @author Poluosmak Andrew
 	 */
 	public class EventManager
 	{

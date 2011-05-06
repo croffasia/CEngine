@@ -1,3 +1,8 @@
+/******************************************************************
+ * CEngine - AS3 component game framework
+ * Copyright (C) 2011 Mr.Bee, LLC
+ * For more information see http://www.mrbee.com.ua
+ ****************************************************************/
 package com.mrbee.cengine.core 
 {
 	import com.mrbee.cengine.CEngine;
@@ -39,6 +44,11 @@ package com.mrbee.cengine.core
 		 * @private 
 		 */
 		private var _stateMachine:StateMachine = null;
+		
+		/**
+		 * @private 
+		 */
+		private var _numComponents:int = 0;
 		
 		/**
 		 * @private 
@@ -89,6 +99,7 @@ package com.mrbee.cengine.core
 				_components[name] = component;
 				
 				component.onAddHandler();
+				_numComponents++;
 					
 				return true;
 			}
@@ -106,6 +117,11 @@ package com.mrbee.cengine.core
 				CEngine.entityManager.register(name, this);
 			else
 				throw new Error ("Set Entity name and register new Entity");
+		}
+		
+		public function get numComponents():int
+		{
+			return _numComponents;
 		}
 		
 		/**
@@ -231,7 +247,7 @@ package com.mrbee.cengine.core
 			if (_components[name] != null) {
 				IEntityComponent(_components[name]).onRemoveHandler();
 				delete _components[name];
-
+				_numComponents--;
 				return true;
 			}
 			
@@ -251,6 +267,7 @@ package com.mrbee.cengine.core
 				if (_components[name] is component) {
 					IEntityComponent(_components[name]).onRemoveHandler();
 					delete _components[name];
+					_numComponents--;
 				}
 			}
 		}
@@ -267,6 +284,7 @@ package com.mrbee.cengine.core
 				if(_stateMachine.unregisterAllStates()){								
 					for (nameComponent in _components){ 
 						IEntityComponent(_components[nameComponent]).onRemoveHandler();
+						_numComponents--;
 						delete _components[nameComponent];		
 					}
 				}
@@ -274,6 +292,7 @@ package com.mrbee.cengine.core
 									
 			for (nameComponent in _components){ 
 				IEntityComponent(_components[nameComponent]).onRemoveHandler();
+				_numComponents--;
 				delete _components[nameComponent];		
 			}
 			

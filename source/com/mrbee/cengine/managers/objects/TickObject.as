@@ -1,7 +1,13 @@
+/******************************************************************
+ * CEngine - AS3 component game framework
+ * Copyright (C) 2011 Mr.Bee, LLC
+ * For more information see http://www.mrbee.com.ua
+ ****************************************************************/
 package com.mrbee.cengine.managers.objects 
 {
 	/** 
 	 * @private 
+	 * @author Poluosmak Andrew
 	 */
 	
 	public class TickObject

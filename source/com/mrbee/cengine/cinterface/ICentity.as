@@ -1,3 +1,8 @@
+/******************************************************************
+ * CEngine - AS3 component game framework
+ * Copyright (C) 2011 Mr.Bee, LLC
+ * For more information see http://www.mrbee.com.ua
+ ****************************************************************/
 package com.mrbee.cengine.cinterface 
 {
 	import com.mrbee.cengine.core.PropertyReference;
@@ -108,6 +113,11 @@ package com.mrbee.cengine.cinterface
 		 * Имя сущности
 		 */
 		function get name():String;
+		
+		/**
+		 * Количество добавленных компонентов
+		 */
+		function get numComponents():int;
 		
 		/**
 		 * @private

@@ -1,3 +1,8 @@
+/******************************************************************
+ * CEngine - AS3 component game framework
+ * Copyright (C) 2011 Mr.Bee, LLC
+ * For more information see http://www.mrbee.com.ua
+ ****************************************************************/
 package com.mrbee.cengine.core 
 {
 	/**
@@ -11,6 +16,7 @@ package com.mrbee.cengine.core
 	 * new PropertyReference("[at]MyComponentName.propertyValue"); // создаст ссылку на свойство propertyValue компонента MyComponentName находящегося в текущей сущности
 	 * new PropertyReference("[at]MyComponentName.myfunction"); // создаст ссылку на метод myfunction() компонента MyComponentName находящегося в текущей сущности 
 	 * </listing> 
+	 * 
 	 * @author Poluosmak Andrew
 	 */
 	public class PropertyReference

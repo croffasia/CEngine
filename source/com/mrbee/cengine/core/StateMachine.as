@@ -1,3 +1,8 @@
+/******************************************************************
+ * CEngine - AS3 component game framework
+ * Copyright (C) 2011 Mr.Bee, LLC
+ * For more information see http://www.mrbee.com.ua
+ ****************************************************************/
 package com.mrbee.cengine.core
 {
 	import com.mrbee.cengine.CEngine;
@@ -13,7 +18,8 @@ package com.mrbee.cengine.core
 	 * Стейт машина (состояния). Стейт машина позволяет организовать разбивку сущностей на состояния, в которых сущность может иметь разный набор 
 	 * функциональности или же по разному отображаться. Объект стейт машины храниться в самой сущности, при условии ее активации.
 	 * 
-	 * @see com.mrbee.cengine.core.CEntity#activateStateMachine
+	 * @see com.mrbee.cengine.core.CEntity#activateStateMachine()
+	 * @author Poluosmak Andrew
 	 */
 	public class StateMachine
 	{
