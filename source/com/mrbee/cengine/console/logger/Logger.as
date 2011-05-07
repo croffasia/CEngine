@@ -17,6 +17,11 @@ package com.mrbee.cengine.console.logger
 		/**
 		 * @private
 		 */
+		private static var _enabled:Boolean = true;
+		
+		/**
+		 * @private
+		 */
 		private static var _totalRows:int = 20;
 		
 		/**
@@ -42,7 +47,8 @@ package com.mrbee.cengine.console.logger
 		 */
 		static public function error(object:Object, message:String):void
 		{			
-			addToLog(setError(message));
+			if(_enabled)
+				addToLog(setError(message));
 		}
 		
 		/**
@@ -53,7 +59,8 @@ package com.mrbee.cengine.console.logger
 		 */
 		static public function notice(object:Object, message:String):void
 		{			
-			addToLog(setNotice(message));
+			if(_enabled)
+				addToLog(setNotice(message));
 		}
 		
 		/**
@@ -64,8 +71,21 @@ package com.mrbee.cengine.console.logger
 		 */
 		static public function info(object:Object, message:String):void
 		{			
-			addToLog(setInfo(message));
+			if(_enabled)
+				addToLog(setInfo(message));
 		}
+		
+		/**
+		 * Вывод информации в trace
+		 * 
+		 * @param object текущий класс
+		 * @param message текст сообщения
+		 */
+		static public function print(object:Object, message:String):void
+		{
+			if(_enabled)
+				trace("INFO: "+message);
+		} 
 
 		/**
 		 * Количество хранимых сообщений
@@ -127,6 +147,22 @@ package com.mrbee.cengine.console.logger
 			}
 			
 			return returnedString;
+		}
+
+		/**
+		 * Включение / Отключение логера
+		 */
+		public static function get enabled():Boolean
+		{
+			return _enabled;
+		}
+
+		/**
+		 * @private
+		 */
+		public static function set enabled(value:Boolean):void
+		{
+			_enabled = value;
 		}
 
 
