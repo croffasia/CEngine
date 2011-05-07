@@ -5,6 +5,9 @@
  ****************************************************************/
 package com.mrbee.cengine.console
 {
+	import com.adobe.utils.StringUtil;
+	import com.mrbee.cengine.console.logger.Logger;
+	
 	import flash.utils.Dictionary;
 
 	/**
@@ -75,11 +78,30 @@ package com.mrbee.cengine.console
 		 */
 		public function runCommand(alias:String):void
 		{
-			alias = alias.toLocaleLowerCase();
+			var params:Array = [];
+			var paramString:String = "";
+			
+			if(alias.indexOf("-p"))
+			{
+				var split:Array = alias.split("-p"); 
+				alias = StringUtil.trim(split[0]).toLocaleLowerCase();	
+				paramString = StringUtil.trim(split[1]);
+				
+				split = paramString.split(" ");
+				
+				if(params != null){
+					var i:int;
+					for(i = 0; i < split.length; i++){
+						params.push(StringUtil.trim(split[i]));
+					}
+				}
+			} else {
+				alias.toLocaleLowerCase();
+			}
 			
 			if(_commands[alias] != null)
 			{
-				CommandObject(_commands[alias]).run();
+				CommandObject(_commands[alias]).run.apply(null, params);
 			}
 		}
 		
@@ -102,16 +124,23 @@ package com.mrbee.cengine.console
 		public function getAlias(alias:String):String
 		{
 			alias = alias.toLocaleLowerCase();
+			var params:String = "";
+			
+			if(alias.indexOf("-p"))
+			{
+				var split:Array = alias.split("-p"); 
+				alias = split[0];				
+			}
 			
 			var item:Object;
-			var index:int;
-			
+			var result:Array;
+
 			for(item in _commands)
-			{
-				index = CommandObject(_commands[item]).alias.lastIndexOf(alias);
-				if(index != -1){					
-					return CommandObject(_commands[item]).alias.substr(alias.length + index, CommandObject(_commands[item]).alias.length - (alias.length + index));
-				}
+			{				
+				result = String(CommandObject(_commands[item]).alias).match('^'+alias+'.*');
+				if(result != null && result[0] != null){
+					return CommandObject(_commands[item]).alias.replace(alias, "");
+				}				
 			}
 			
 			return "";

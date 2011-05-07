@@ -29,13 +29,13 @@ package
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
 			// инициализация фреймворка
-			CEngine.getInstance().initialize(this);
+			CEngine.getInstance().initialize(this);	
 			
 			/**
 			 * Метод логгера print замена стандартному trace(). 
 			 * Если Logger.enabled выключен, информация не будет выведена. По умолчанию логер включен.
 			 */
-			Logger.print(this, "Hello CEngine!");
+			Logger.print("Hello CEngine!");
 			
 			// создаем первую нашу сущность MyFirstEntity
 			new MyFirstEntity();

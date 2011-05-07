@@ -11,19 +11,28 @@ package com.mrbee.cengine.console.logger
 	 */
 	public class LoggerTemplates
 	{
-		protected static function setError(message:String):String
+		public static function ERROR(message:String, time:Date = null):String
 		{
-			return ('<font color="#CC0000"><b>ERROR:</b> '+message+'</font>');
+			if(time == null)
+				return ('<font color="#CC0000"><b>'+LogItem.ERROR+':</b> '+message+'</font>');
+			else
+				return ('<font color="#CC0000"><b>'+LogItem.ERROR+' ('+time.getHours()+'h '+time.getMinutes()+'m '+time.getSeconds()+'s '+time.getMilliseconds()+'ms):</b> '+message+'</font>');
 		}
 		
-		protected static function setNotice(message:String):String
+		public static function NOTICE(message:String, time:Date = null):String
 		{
-			return ('<font color="#FF9900"><b>NOTICE:</b> '+message+'</font>');
+			if(time == null)
+				return ('<font color="#FF9900"><b>'+LogItem.NOTICE+':</b> '+message+'</font>');
+			else
+				return ('<font color="#FF9900"><b>'+LogItem.NOTICE+' ('+time.getHours()+'h '+time.getMinutes()+'m '+time.getSeconds()+'s '+time.getMilliseconds()+'ms):</b> '+message+'</font>');
 		} 
-		
-		protected static function setInfo(message:String):String
-		{
-			return ('<font color="#999999;"><b>INFO:</b> '+message+'</font>');
+		 
+		public static function INFO(message:String, time:Date = null):String
+		{			
+			if(time == null)
+				return ('<font color="#efefef;"><b>'+LogItem.INFO+':</b> '+message+'</font>');
+			else
+				return ('<font color="#efefef;"><b>'+LogItem.INFO+' ('+time.getHours()+'h '+time.getMinutes()+'m '+time.getSeconds()+'s '+time.getMilliseconds()+'ms):</b> '+message+'</font>');
 		} 
 	}
 }

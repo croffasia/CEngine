@@ -1,3 +1,8 @@
+/******************************************************************
+ * CEngine - AS3 component game framework
+ * Copyright (C) 2011 Mr.Bee, LLC
+ * For more information see http://www.mrbee.com.ua
+ ****************************************************************/
 package com.mrbee.cengine 
 {
 	import com.mrbee.cengine.console.Console;
@@ -11,7 +16,6 @@ package com.mrbee.cengine
 	import flash.display.Sprite;
 	import flash.events.EventDispatcher;
 	
-
 	/** 
 	 * Базовый класс фреймворка. Базовый класс содержит все необходимые для работы менеджеры и доступ к Flash vars объектам.
 	 * 
@@ -98,7 +102,7 @@ package com.mrbee.cengine
 		}
 		
 		/** 
-		 * @private
+		 * Объект консоли
 		 */
 		static public function get console():Console { return _console; }
 		

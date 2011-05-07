@@ -24,10 +24,10 @@ package com.mrbee.cengine.console
 			_alias = "";
 		}
 		
-		public function run():void
+		public function run(...arg):void
 		{
 			if(_external != null)
-				_external();
+				_external.apply(null, arg);
 		}
 
 		public function get alias():String

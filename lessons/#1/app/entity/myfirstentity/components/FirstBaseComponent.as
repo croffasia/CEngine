@@ -4,7 +4,7 @@ package app.entity.myfirstentity.components
 	import com.mrbee.cengine.console.logger.Logger;
 	
 	/**
-	 * ...
+	 * Базовый компонент
 	 * @author Poluosmak Andrew
 	 */
 	public class FirstBaseComponent extends EntityComponent
@@ -15,7 +15,7 @@ package app.entity.myfirstentity.components
 		public function FirstBaseComponent() 
 		{
 			super();						
-			Logger.print(this, "FirstBaseComponent Created");
+			Logger.print("FirstBaseComponent Created");
 		}
 		
 		/**
@@ -25,7 +25,7 @@ package app.entity.myfirstentity.components
 		override public function onAddHandler():void
 		{
 			super.onAddHandler();			
-			Logger.print(this, "FirstBaseComponent added to entity");
+			Logger.print("FirstBaseComponent added to entity");
 			
 			initialize();
 		}
@@ -36,14 +36,15 @@ package app.entity.myfirstentity.components
 		 */
 		override public function onRemoveHandler():void
 		{					
-			Logger.print(this, "FirstBaseComponent removed from entity");
+			Logger.print("FirstBaseComponent removed from entity");
 			super.onRemoveHandler();
 		}
 		
-		private function initialize():void
+		//
+		public function initialize():void
 		{
 			// в любом типе компонента всегда доступен сущность родитель owner
-			Logger.print(this, "FirstBaseComponent initialize. My owner: "+owner.name);						
+			Logger.print("FirstBaseComponent initialize. My owner: "+owner.name);						
 		}
 		
 	}

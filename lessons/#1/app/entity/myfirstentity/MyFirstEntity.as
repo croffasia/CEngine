@@ -23,7 +23,7 @@ package app.entity.myfirstentity
 			// регистрируем сущность в системе
 			registerEntity();
 			
-			Logger.print(this, "MyFirstEntity Created");			
+			Logger.print("MyFirstEntity Created");			
 			
 			configureComponents();
 		}

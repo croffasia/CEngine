@@ -186,7 +186,7 @@ package com.mrbee.cengine.core
 			var properties:Array = property.property;
 			
 			// find property			
-			if(properties.length > 0)			
+			if(properties.length > 0 && (properties[0] in currentComponent))			
 				return currentComponent[properties[0]];			
 			else
 				return currentComponent;

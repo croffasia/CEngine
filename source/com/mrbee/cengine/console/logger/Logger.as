@@ -12,12 +12,17 @@ package com.mrbee.cengine.console.logger
 	 * 
 	 * @author Poluosmak Andrew
 	 */
-	public class Logger extends LoggerTemplates
+	public class Logger
 	{
 		/**
 		 * @private
 		 */
 		private static var _enabled:Boolean = true;
+		
+		/**
+		 * @private
+		 */
+		private static var _logId:int = 0;
 		
 		/**
 		 * @private
@@ -48,7 +53,7 @@ package com.mrbee.cengine.console.logger
 		static public function error(object:Object, message:String):void
 		{			
 			if(_enabled)
-				addToLog(setError(message));
+				addToLog(object, message, LogItem.ERROR);
 		}
 		
 		/**
@@ -60,7 +65,7 @@ package com.mrbee.cengine.console.logger
 		static public function notice(object:Object, message:String):void
 		{			
 			if(_enabled)
-				addToLog(setNotice(message));
+				addToLog(object, message, LogItem.NOTICE);
 		}
 		
 		/**
@@ -72,19 +77,19 @@ package com.mrbee.cengine.console.logger
 		static public function info(object:Object, message:String):void
 		{			
 			if(_enabled)
-				addToLog(setInfo(message));
+				addToLog(object, message, LogItem.INFO);
 		}
 		
 		/**
 		 * Вывод информации в trace
 		 * 
-		 * @param object текущий класс
 		 * @param message текст сообщения
 		 */
-		static public function print(object:Object, message:String):void
+		static public function print(message:String):void
 		{
-			if(_enabled)
-				trace("INFO: "+message);
+			if(_enabled){
+				trace(LogItem.DEBUG+": "+message);
+			}
 		} 
 
 		/**
@@ -106,14 +111,26 @@ package com.mrbee.cengine.console.logger
 		/**
 		 * @private
 		 */
-		private static function addToLog(message:String):void
+		private static function addToLog(reporter:*, message:String, level:String):void
 		{
 			if(_length >= _totalRows)
 				deleteFromLog();
 			
 			_length++;
 			
-			_logs[_length] = message; 
+			var item:LogItem = new LogItem();			
+			item.messages = message;
+			item.reporter = reporter;
+			item.level = level;
+			_logs[item] = item;
+		}
+		
+		/**
+		 * Очистка логов
+		 */
+		public static function clear():void
+		{
+			deleteFromLog(true);
 		}
 		
 		/**
@@ -132,18 +149,29 @@ package com.mrbee.cengine.console.logger
 					break;
 			}
 		}
-
+		
 		/**
-		 * @private
+		 * Формирует стилизированную строку вывода лога в консоль
+		 * 
+		 * @return String
 		 */
-		public static function get logsToString():String
-		{ 
+		public static function getLogItems(level:String = ""):String
+		{
 			var item:Object;
 			var returnedString:String = "";
+			var itemArray:Array = [];
 			
-			for(item in _logs)
-			{
-				returnedString += _logs[item]+"\r";
+			for(item in _logs){
+				if(level == "" || LogItem(_logs[item]).level == level){
+					itemArray.push(LogItem(_logs[item]));
+				}
+			}
+			
+			itemArray.sortOn("id", Array.NUMERIC);
+			var i:int;
+			
+			for(i = 0; i < itemArray.length; i++){
+				returnedString += LogItem(itemArray[i]).template(LogItem(itemArray[i]).messages)+"\r";
 			}
 			
 			return returnedString;
@@ -165,6 +193,14 @@ package com.mrbee.cengine.console.logger
 			_enabled = value;
 		}
 
+		/**
+		 * Уникальный ID лог записи
+		 */
+		public static function get logId():int
+		{
+			_logId++
+			return _logId;
+		}
 
 	}
 }
