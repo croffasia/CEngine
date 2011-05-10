@@ -5,8 +5,7 @@
  ****************************************************************/
 package com.mrbee.cengine.managers 
 {
-	import com.mrbee.cengine.CEngine;
-	
+	import com.mrbee.cengine.CEngine;	
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	
@@ -144,7 +143,22 @@ package com.mrbee.cengine.managers
 			if (oldChild != null && (oldChild.numChildren > 0 && alwaysRemove == true))
 				CEngine.mainStage.removeChild(oldChild);
 				
-		}		
+		}	
+		
+		/**
+		 * Проверка на существование DisplayObject объекта на указаной сцене
+		 * 
+		 * @param scene имя сцены
+		 * @param displayObj DisplayObject объект
+		 */
+		public function contains(scene:String, displayObj:DisplayObject):Boolean
+		{
+			if(getLayer(scene) != null && getLayer(scene).contains(displayObj)){
+				return true;
+			}
+			
+			return false;
+		}
 		
 		/**
 		 * Возвращает объект слоя

@@ -30,7 +30,7 @@ package com.mrbee.cengine.base.components
 		/**
 		 * @private
 		 */
-		private var _scene:String = LayerManager.DEFAULT_LAYER;
+		private var _scene:String = "";
 		
 		/**
 		 * @private
@@ -46,7 +46,10 @@ package com.mrbee.cengine.base.components
 			super.onAddHandler();
 			
 			_displayObject = new Sprite();
-			CEngine.layerManager.getLayer(_scene).addChild(_displayObject);
+			
+			if(_scene != "" && CEngine.layerManager.getLayer(_scene) != null){
+				CEngine.layerManager.getLayer(_scene).addChild(_displayObject);
+			}
 		}
 		
 		/**
@@ -143,7 +146,12 @@ package com.mrbee.cengine.base.components
 				{ 
 					_displayObject.removeChildAt(0);
 				}
-			}
+				
+				if(_scene != "" && CEngine.layerManager.contains(_scene, _displayObject) == true)
+				{
+					CEngine.layerManager.getLayer(_scene).removeChild(_displayObject);
+				}
+			}			
 		}
 		
 		/**
